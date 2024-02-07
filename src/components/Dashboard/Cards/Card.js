@@ -1,13 +1,15 @@
 
-function Card() {
+function Card({ tasks, title }) {
   return (
-    <div className="card w-96 bg-white text-neutral-content m-2">
-      <div className="card-body items-center text-center">
-        <h2 className="card-title">Blabla!</h2>
-        {/* <div className="card-actions justify-end">
-          <button className="btn btn-primary btn-sm">Accept</button>
-          <button className="btn btn-ghost btn-sm">Deny</button>
-        </div> */}
+    <div className="p-6 w-56 m-1">
+      <div className="items-center text-center">
+        <h2 className="card-title text-sm text-gray-700">{title}</h2>
+        {tasks.map((task) => (
+          <div key={task.id} className="mt-2 p-3 shadow bg-slate-50 rounded-md">
+            <h3 className="text-sm font-medium text-gray-800">{task.title}</h3>
+            <p className="text-sm text-gray-600">{task.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   )
