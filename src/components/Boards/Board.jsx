@@ -4,10 +4,10 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import TaskItem from "./TaskItem";
-import SortableTaskItem from "./SortableTaskItem";
+import TaskItem from "../Tasks/TaskItem";
+import SortableTaskItem from "../Tasks/SortableTaskItem";
 
-const BoardSection = ({ id, title, tasks }) => {
+const Board = ({ id, title, tasks }) => {
   const { setNodeRef } = useDroppable({ id });
 
   return (
@@ -32,4 +32,4 @@ const BoardSection = ({ id, title, tasks }) => {
   );
 };
 
-export default BoardSection;
+export default Board;

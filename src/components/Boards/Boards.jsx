@@ -10,12 +10,11 @@ import {
   defaultDropAnimation,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates, arrayMove } from "@dnd-kit/sortable";
-// import { INITIAL_TASKS } from "../data";
-import { findBoardSectionContainer, initializeBoard } from "../utils/board";
-import BoardSection from "./BoardSection";
-import TaskItem from "./TaskItem";
+import { findBoardSectionContainer, initializeBoard } from "../../utils/board";
+import Board from "./Board";
+import TaskItem from "../Tasks/TaskItem";
 
-const BoardSectionList = ({ tasks }) => {
+const Boards = ({ tasks }) => {
   const initialBoardSections = initializeBoard(tasks);
   const [boardSections, setBoardSections] = useState(initialBoardSections);
 
@@ -131,7 +130,7 @@ const BoardSectionList = ({ tasks }) => {
               key={boardSectionKey}
               className="p-6 m-3 bg-slate-300 w-full rounded-lg"
             >
-              <BoardSection
+              <Board
                 id={boardSectionKey}
                 title={boardSectionKey}
                 tasks={boardSections[boardSectionKey]}
@@ -147,4 +146,4 @@ const BoardSectionList = ({ tasks }) => {
   );
 };
 
-export default BoardSectionList;
+export default Boards;

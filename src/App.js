@@ -1,7 +1,7 @@
 import { useQuery, gql } from "@apollo/client";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import BoardSectionList from "./components/BoardSectionList";
+import Header from "./components/UI/Header";
+import Sidebar from "./components/UI/Sidebar";
+import BoardSectionList from "./components/Boards/Boards";
 
 
 // const GET_BOARDS = gql`
