@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   useSensors,
   useSensor,
@@ -10,14 +10,13 @@ import {
   defaultDropAnimation,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates, arrayMove } from "@dnd-kit/sortable";
-import { INITIAL_TASKS } from "../data";
+// import { INITIAL_TASKS } from "../data";
 import { findBoardSectionContainer, initializeBoard } from "../utils/board";
 import BoardSection from "./BoardSection";
 import TaskItem from "./TaskItem";
 
-const BoardSectionList = () => {
-  const tasks = INITIAL_TASKS;
-  const initialBoardSections = initializeBoard(INITIAL_TASKS);
+const BoardSectionList = ({ tasks }) => {
+  const initialBoardSections = initializeBoard(tasks);
   const [boardSections, setBoardSections] = useState(initialBoardSections);
 
   const [activeTaskId, setActiveTaskId] = useState(null);
@@ -37,7 +36,6 @@ const BoardSectionList = () => {
     // Find the containers
     const activeContainer = findBoardSectionContainer(boardSections, active.id);
     const overContainer = findBoardSectionContainer(boardSections, over?.id);
-
     if (
       !activeContainer ||
       !overContainer ||
@@ -127,11 +125,11 @@ const BoardSectionList = () => {
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
       >
-        <div className="drawer-content flex flex-row p-24">
+        <div className="drawer-content flex flex-col md:flex-row p-12 mr-6 md:mr-0">
           {Object.keys(boardSections).map((boardSectionKey) => (
             <div
               key={boardSectionKey}
-              className="p-6 m-6 bg-slate-300 w-full rounded-lg"
+              className="p-6 m-3 bg-slate-300 w-full rounded-lg"
             >
               <BoardSection
                 id={boardSectionKey}

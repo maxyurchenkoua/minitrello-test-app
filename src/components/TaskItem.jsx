@@ -1,12 +1,28 @@
 import { useState, userEffect } from "react";
+import { Formik, Form, Field } from "formik";
 
-const TaskItem = ({ task }) => {
-  const [selectedTask, setSelectedTask] = useState({
-    title: "",
-  });
+const TaskItem = ({ task, closeModal }) => {
+  // const [selectedTask, setSelectedTask] = useState({
+  //   title: "",
+  // });
+
+  const initialValues = {
+    name: task.title,
+  };
+
+  // const saveItem = async (values) => {
+  //   try {
+  //     await editItem(values, item.id);
+  //     closeModal();
+  //     handleSuccess("Item is saved");
+  //     dispatch(getItemsContent());
+  //   } catch (error) {
+  //     handleError(error);
+  //   }
+  // };
 
   const handleTaskClick = (task) => {
-    setSelectedTask(task);
+    // setSelectedTask(task);
     document.getElementById("edit_modal").showModal();
   };
 
@@ -27,9 +43,7 @@ const TaskItem = ({ task }) => {
             placeholder="Type here"
             className="input input-sm input-bordered input-primary w-full max-w-xs"
           />
-
-          <p className="py-4">{selectedTask.title}</p>
-          <p className="py-4">{selectedTask.description}</p>
+          <p className="py-4">{task.title}</p>
         </div>
         <form method="dialog" className="modal-backdrop">
           <button>close</button>
