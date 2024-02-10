@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import Header from "./components/UI/Header";
 import Sidebar from "./components/UI/Sidebar";
-import BoardSectionList from "./components/Boards/Boards";
+import Boards from "./components/Boards/Boards";
 import { GET_TASKS } from './utils/queries'
 import { BiPlus } from "react-icons/bi";
 import AddTask from "./components/Tasks/AddTask";
@@ -41,7 +41,7 @@ function App() {
               Add task
             </button>
           </div>
-          <BoardSectionList tasks={data.tasks} updateTasks={updateTasks} />
+          <Boards tasks={data.tasks} updateTasks={updateTasks} />
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
