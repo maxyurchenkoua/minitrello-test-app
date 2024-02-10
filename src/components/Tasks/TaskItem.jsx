@@ -7,6 +7,9 @@ const TaskItem = ({ task }) => {
     document.getElementById("edit_modal").showModal();
   };
 
+  const date = new Date(task.publishedAt);
+  const localDate = date.toLocaleString();
+
   return (
     <div
       key={task.id}
@@ -14,6 +17,7 @@ const TaskItem = ({ task }) => {
       onDoubleClick={() => handleTaskClick(task)}
     >
       <h3 className="text-sm font-medium text-gray-800">{task.title}</h3>
+      <h3 className="text-xs font-medium text-gray-400">{localDate}</h3>
       <EditTask title={task.title} />
     </div>
   );

@@ -3,7 +3,6 @@ import Header from "./components/UI/Header";
 import Sidebar from "./components/UI/Sidebar";
 import BoardSectionList from "./components/Boards/Boards";
 
-
 // const GET_BOARDS = gql`
 //   query GetBoards {
 //     boards {
@@ -21,11 +20,12 @@ import BoardSectionList from "./components/Boards/Boards";
 
 const QUERY = gql`
   {
-    tasks {
+    # tasks(orderBy: createdAt_DESC) {
+    tasks(orderBy: createdAt_ASC) {
       id
       title
-      description
       taskStatus
+      publishedAt
     }
   }
 `;
