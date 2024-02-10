@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
 import EditTask from "./EditTask";
 
-const TaskItem = ({ task }) => {
+const TaskItem = ({ task, updateTasks }) => {
   const handleTaskClick = (task) => {
     // setSelectedTask(task);
     document.getElementById("edit_modal").showModal();
@@ -18,7 +17,7 @@ const TaskItem = ({ task }) => {
     >
       <h3 className="text-sm font-medium text-gray-800">{task.title}</h3>
       <h3 className="text-xs font-medium text-gray-400">{localDate}</h3>
-      <EditTask title={task.title} />
+      <EditTask title={task.title} updateTasks={updateTasks} />
     </div>
   );
 };

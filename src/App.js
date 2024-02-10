@@ -1,37 +1,20 @@
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Header from "./components/UI/Header";
 import Sidebar from "./components/UI/Sidebar";
 import BoardSectionList from "./components/Boards/Boards";
-
-// const GET_BOARDS = gql`
-//   query GetBoards {
-//     boards {
-//       id
-//       name
-//       position
-//       tasks {
-//         id
-//         title
-//         description
-//       }
-//     }
-//   }
-// `;
-
-const QUERY = gql`
-  {
-    # tasks(orderBy: createdAt_DESC) {
-    tasks(orderBy: createdAt_ASC) {
-      id
-      title
-      taskStatus
-      publishedAt
-    }
-  }
-`;
+import { GET_TASKS } from './utils/queries'
+import { BiPlus } from "react-icons/bi";
 
 function App() {
-  const { loading, error, data } = useQuery(QUERY);
+  const { loading, error, data, refetch } = useQuery(GET_TASKS);
+
+  const updateTasks = () => {
+    refetch()
+  };
+
+  const handleTaskClick = () => {
+    document.getElementById("add-task").showModal();
+  };
 
   if (loading) return (
     <div className="mx-auto mt-48 text-center">
@@ -48,7 +31,16 @@ function App() {
           {/* {JSON.stringify(data.boards)} */}
           {/* <BoardSectionList boards={data.boards.tasks} /> */}
 
-          <BoardSectionList tasks={data.tasks} />
+          <div className="px-12 pt-12 mr-6 md:mr-0 align-middle">
+            <button
+              className="btn btn-sm btn-primary"
+              onClick={() => handleTaskClick()}
+            >
+              <BiPlus size={22} />
+              Add task
+            </button>
+          </div>
+          <BoardSectionList tasks={data.tasks} updateTasks={updateTasks} />
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>

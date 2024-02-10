@@ -1,13 +1,14 @@
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-const EditTask = ({ title }) => {
+const EditTask = ({ title, updateTasks }) => {
   const initialValues = {
     title: title,
   };
 
   const submit = async (values) => {
     // await saveItem(values);
+    updateTasks();
     alert("Saved!");
     console.log(values);
   };

@@ -14,11 +14,14 @@ import { findBoardSectionContainer, initializeBoard } from "../../utils/board";
 import Board from "./Board";
 import TaskItem from "../Tasks/TaskItem";
 
-const Boards = ({ tasks }) => {
+const Boards = ({ tasks, updateTasks }) => {
   const initialBoardSections = initializeBoard(tasks);
   const [boardSections, setBoardSections] = useState(initialBoardSections);
-
   const [activeTaskId, setActiveTaskId] = useState(null);
+
+  useEffect(() => {
+    initializeBoard(tasks);
+  }, [tasks]);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -124,7 +127,7 @@ const Boards = ({ tasks }) => {
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
       >
-        <div className="drawer-content flex flex-col md:flex-row p-12 mr-6 md:mr-0">
+        <div className="drawer-content flex flex-col md:flex-row p-9 mr-6 md:mr-0">
           {Object.keys(boardSections).map((boardSectionKey) => (
             <div
               key={boardSectionKey}
@@ -134,11 +137,12 @@ const Boards = ({ tasks }) => {
                 id={boardSectionKey}
                 title={boardSectionKey}
                 tasks={boardSections[boardSectionKey]}
+                updateTasks={updateTasks}
               />
             </div>
           ))}
           <DragOverlay dropAnimation={dropAnimation}>
-            {task ? <TaskItem task={task} /> : null}
+            {task ? <TaskItem task={task} updateTasks={updateTasks} /> : null}
           </DragOverlay>
         </div>
       </DndContext>
