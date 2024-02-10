@@ -7,9 +7,8 @@ import {
 } from "@dnd-kit/sortable";
 import TaskItem from "../Tasks/TaskItem";
 import SortableTaskItem from "../Tasks/SortableTaskItem";
-import AddTask from "../Tasks/AddTask";
 
-const Board = ({ id, title, tasks, updateTasks }) => {
+const Board = ({ id, title, tasks }) => {
   const { setNodeRef } = useDroppable({ id });
 
   return (
@@ -32,7 +31,6 @@ const Board = ({ id, title, tasks, updateTasks }) => {
           ))}
         </div>
       </SortableContext>
-      <AddTask boardId={id} updateTasks={updateTasks} />
     </div>
   );
 };

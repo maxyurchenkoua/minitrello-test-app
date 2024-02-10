@@ -4,6 +4,7 @@ import Sidebar from "./components/UI/Sidebar";
 import BoardSectionList from "./components/Boards/Boards";
 import { GET_TASKS } from './utils/queries'
 import { BiPlus } from "react-icons/bi";
+import AddTask from "./components/Tasks/AddTask";
 
 function App() {
   const { loading, error, data, refetch } = useQuery(GET_TASKS);
@@ -47,6 +48,7 @@ function App() {
           <Sidebar />
         </div>
       </div>
+      <AddTask updateTasks={updateTasks} />
     </div>
   );
 }

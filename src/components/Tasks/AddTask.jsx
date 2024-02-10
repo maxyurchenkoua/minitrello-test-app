@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { useMutation } from "@apollo/client";
 import { ADD_TASK, PUBLISH_TASK } from "../../utils/mutations";
 
-const AddTask = ({ boardId, updateTasks }) => {
+const AddTask = ({ updateTasks }) => {
   const [addTask] = useMutation(ADD_TASK);
   const [publishTask] = useMutation(PUBLISH_TASK);
 
@@ -22,7 +22,7 @@ const AddTask = ({ boardId, updateTasks }) => {
         variables: {
           taskInput: {
             title: values.title,
-            taskStatus: boardId,
+            taskStatus: values.board_id,
           },
         },
       });
