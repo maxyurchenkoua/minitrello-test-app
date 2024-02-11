@@ -29,7 +29,7 @@ function App() {
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content bg-slate-200">
-          {/* {JSON.stringify(data.boards)} */}
+          {/* {JSON.stringify(data.tasks)} */}
           {/* <BoardSectionList boards={data.boards.tasks} /> */}
 
           <div className="px-12 pt-12 mr-6 md:mr-0 align-middle">

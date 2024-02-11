@@ -1,4 +1,4 @@
-import { RiUserLine, RiNotification3Line, RiMenuFill } from "react-icons/ri";
+import { RiMenuFill } from "react-icons/ri";
 
 function Header() {
   return (
@@ -8,12 +8,6 @@ function Header() {
           <label htmlFor="my-drawer-2" className="btn btn-primary btn-sm drawer-button lg:hidden">
             <RiMenuFill size={20} />
           </label>
-          <button className="btn btn-sm m-1">
-            <RiNotification3Line size={22} />
-          </button>
-          <button className="btn btn-sm m-1">
-            <RiUserLine size={22} />
-          </button>
         </div>
       </nav>
     </header>

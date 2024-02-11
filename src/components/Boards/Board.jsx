@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
-
 import { useDroppable } from "@dnd-kit/core";
 import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import TaskItem from "../Tasks/TaskItem";
-import SortableTaskItem from "../Tasks/SortableTaskItem";
 
-const Board = ({ id, title, tasks }) => {
+const Board = ({ id, title, tasks, updateTasks }) => {
   const { setNodeRef } = useDroppable({ id });
 
   return (
@@ -24,9 +21,7 @@ const Board = ({ id, title, tasks }) => {
         <div ref={setNodeRef}>
           {tasks.map((task) => (
             <div key={task.id} sx={{ mb: 2 }}>
-              <SortableTaskItem id={task.id}>
-                <TaskItem task={task} />
-              </SortableTaskItem>
+              <TaskItem task={task} id={task.id} updateTasks={updateTasks} />
             </div>
           ))}
         </div>
