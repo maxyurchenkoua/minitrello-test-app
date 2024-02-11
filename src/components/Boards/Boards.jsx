@@ -20,7 +20,8 @@ const Boards = ({ tasks, updateTasks }) => {
   const [activeTaskId, setActiveTaskId] = useState(null);
 
   useEffect(() => {
-    initializeBoard(tasks);
+    const updatedBoardSections = initializeBoard(tasks);
+    setBoardSections(updatedBoardSections);
   }, [tasks]);
 
   const sensors = useSensors(
